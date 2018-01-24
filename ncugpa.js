@@ -107,7 +107,7 @@ javascript:(
 			
 		}
 
-		console.log(totalGPA / count);
+		alert(totalGPA / count);
     }
 
 	})();
