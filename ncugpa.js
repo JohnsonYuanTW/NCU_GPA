@@ -10,11 +10,11 @@ javascript:(
     		initTest()
     	}else if (window.location.href == "https://portal.ncu.edu.tw/system/162")
     	{
-    		alert("請轉址後請再試一次");
-    		window.location.href = "https://cis.ncu.edu.tw/ScoreInquiries/student/student_record.php"
+    		alert("忘記把 查詢成績 拉過去了嗎\n請到新頁面再按一次~");
+    		window.location.replace = "https://cis.ncu.edu.tw/ScoreInquiries/student/student_record.php"
     	}else
     	{
-    		window.location.href = "https://portal.ncu.edu.tw/system/162"
+    		window.location.replace = "https://portal.ncu.edu.tw/system/162"
     		alert("請登入 portal 再試一次");
     	}
 	}
