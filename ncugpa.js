@@ -7,7 +7,12 @@ javascript:(
 	function checkdomain() {
 		if(document.domain == "cis.ncu.edu.tw")
     	{
+
     		initTest();
+    	}else if (document.domain == "portal.ncu.edu.tw") 
+    	{
+    		window.location.href = "https://portal.ncu.edu.tw/system/show/162";
+    		alert("由於網域不同 請於新頁面再試一次");
     	}else
     	{
     		window.location.href = "https://portal.ncu.edu.tw/system/show/162";
@@ -39,15 +44,17 @@ javascript:(
     function getData()
     {
 		var list = new Array(0);
-    	var a = $(".list1").each(function()
+
+    	var a = $(".list1", $('frame[name="bottom"]', top.document)[0].contentDocument).each(function()
 		{
-  			//console.log($(this).html());
-  			list.push($(this).html())
+  			list.push($(this).text())
 		});
 
-		var data = Array();
-		    
-		$("tbody tr").each(function(i, v){
+    	//console.log(a[0].children[0].innerHTML)
+
+		var data = new Array();
+/*
+		$($("tbody tr"), list).each(function(i, v){
 		    data[i] = Array();
 		    $(this).children('td').each(function(ii, vv){
 		    	switch(ii)
@@ -64,16 +71,38 @@ javascript:(
 		    	}
 		    }); 
 		})
+*/
+	for (var i = 0; i < list.length; i++) {
+		data[i] = Array();
+		for (var j = 0; j < 5; j++) {
+			switch(j)
+			{
+				case 0:
+	    			data[i][0] = a[i].children[0].innerHTML;
+	    		break;
+	    		case 3:
+	    			data[i][1] = a[i].children[3].innerHTML;
+	    		break;
+	    		case 4:
+	    			data[i][2] = a[i].children[4].innerHTML;
+	    		break;
+			}
+		}
+	}
+
+
+		console.log("data: " + data)
+
 		if (list.length==0) {
 			window.location.href = "https://portal.ncu.edu.tw/system/show/162";
-    		alert("請登入 portal 再試一次");
+    		alert("連線逾時 / 網域錯誤\n請重新再試一次");
 		}
 		calcGPA(data);
     }
 
     function calcGPA(data) 
     {
-    	var totalGPA = 0.0;
+    	var totalGP = 0.0;
     	var count = 0.0;
     	for (var i = 0; i < data.length; i++) 
     	{
@@ -82,25 +111,24 @@ javascript:(
 				switch(true)
 				{
 					case(data[i][2]>=80 && data[i][2] <=100):
-						totalGPA += (4 * data[i][1]);
+						totalGP += (4 * data[i][1]);
 					break;
 					case(data[i][2]>=70 && data[i][2] <80):
-						totalGPA += (3 * data[i][1]);
+						totalGP += (3 * data[i][1]);
 					break;
 					case(data[i][2]>=60 && data[i][2] <70):
-						totalGPA += (2 * data[i][1]);
+						totalGP += (2 * data[i][1]);
 					break;
 					case(data[i][2] <60):
-						totalGPA += (1 * data[i][1]);
+						totalGP += (1 * data[i][1]);
 					break;
 				}
 				count += parseInt(data[i][1]);
-				//console.log(data[i][1] + " " + data[i][2]);
 			}
 			
 		}
 
-		alert(totalGPA / count);
+		alert("totalGP: " + totalGP + "\ncount: " + count + "\nGPA: " + (totalGP/count));
 		window.location.href = "https://portal.ncu.edu.tw/system/162"
     }
 
