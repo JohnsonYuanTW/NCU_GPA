@@ -7,14 +7,10 @@ javascript:(
 	function checkdomain() {
 		if(document.domain == "cis.ncu.edu.tw")
     	{
-    		initTest()
-    	}else if (window.location.href == "https://portal.ncu.edu.tw/system/162")
-    	{
-    		alert("忘記把 查詢成績 拉過去了嗎\n請到新頁面再按一次~");
-    		window.location.replace = "https://cis.ncu.edu.tw/ScoreInquiries/student/student_record.php"
+    		initTest();
     	}else
     	{
-    		window.location.replace = "https://portal.ncu.edu.tw/system/162"
+    		window.location.href = "https://portal.ncu.edu.tw/system/show/162";
     		alert("請登入 portal 再試一次");
     	}
 	}
@@ -69,7 +65,7 @@ javascript:(
 		    }); 
 		})
 		if (list.length==0) {
-			window.location.href = "https://portal.ncu.edu.tw/system/162"
+			window.location.href = "https://portal.ncu.edu.tw/system/show/162";
     		alert("請登入 portal 再試一次");
 		}
 		calcGPA(data);
@@ -104,7 +100,8 @@ javascript:(
 			
 		}
 
-		console.log(totalGPA / count);
+		alert(totalGPA / count);
+		window.location.href = "https://portal.ncu.edu.tw/system/162"
     }
 
 	})();
