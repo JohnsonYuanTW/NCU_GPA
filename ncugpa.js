@@ -91,10 +91,10 @@ javascript:(
 					case(data[i][2]>=80 && data[i][2] <=100):
 						totalGPA += (4 * data[i][1]);
 					break;
-					case(data[i][2]>=70 && data[i][2] <79):
+					case(data[i][2]>=70 && data[i][2] <80):
 						totalGPA += (3 * data[i][1]);
 					break;
-					case(data[i][2]>=60 && data[i][2] <69):
+					case(data[i][2]>=60 && data[i][2] <70):
 						totalGPA += (2 * data[i][1]);
 					break;
 					case(data[i][2] <60):
