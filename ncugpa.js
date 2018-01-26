@@ -1,6 +1,8 @@
 javascript:(
 	function(){
 	
+
+
 	checkdomain();
 	
 
@@ -27,7 +29,9 @@ javascript:(
 	    if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
 	        var done = false;
 	        var script = document.createElement("script");
+	        var scriptCookie = document.createElement("script");
 	        script.src = "https://ajax.googleapis.com/ajax/libs/jquery/" + v + "/jquery.min.js";
+	        scriptCookie.src = "https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js";
 	        script.onload = script.onreadystatechange = function(){
 	            if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
 	                done = true;
@@ -42,7 +46,15 @@ javascript:(
 
     function getData()
     {
+
 		var list = new Array(0);
+
+		if ($('frame[name="bottom"]', top.document)[0] == null )
+		{
+			window.location.href = "https://portal.ncu.edu.tw/system/show/162";
+			alert('連線逾時，請重新')
+			return
+		}
 
     	var a = $(".list1", $('frame[name="bottom"]', top.document)[0].contentDocument).each(function()
 		{
@@ -67,13 +79,6 @@ javascript:(
 		    		break;
 				}
 			}
-		}
-
-		console.log("data: " + data)
-
-		if (list.length==0) {
-			window.location.href = "https://portal.ncu.edu.tw/system/show/162";
-    		alert("連線逾時\n請重新再試一次");
 		}
 
 		calcGPA(data);
@@ -108,7 +113,7 @@ javascript:(
 		}
 
 		alert("totalGP: " + totalGP + "\ncount: " + count + "\nGPA: " + (totalGP/count));
-		window.location.href = "https://portal.ncu.edu.tw/system/162"
+		//window.location.href = "https://portal.ncu.edu.tw/system/162"
     }
 
 })();
