@@ -7,12 +7,11 @@ javascript:(
 	function checkdomain() {
 		if(document.domain == "cis.ncu.edu.tw")
     	{
-
     		initTest();
     	}else if (document.domain == "portal.ncu.edu.tw") 
     	{
     		window.location.href = "https://portal.ncu.edu.tw/system/show/162";
-    		alert("由於網域不同 請於新頁面再試一次");
+    		alert("由於學校系統存取限制 請於新頁面再試一次 將自動轉址");
     	}else
     	{
     		window.location.href = "https://portal.ncu.edu.tw/system/show/162";
@@ -50,53 +49,33 @@ javascript:(
   			list.push($(this).text())
 		});
 
-    	//console.log(a[0].children[0].innerHTML)
-
 		var data = new Array();
-/*
-		$($("tbody tr"), list).each(function(i, v){
-		    data[i] = Array();
-		    $(this).children('td').each(function(ii, vv){
-		    	switch(ii)
-		    	{
-		    		case 0:
-		    			data[i][0] = $(this).text();
+
+		for (var i = 0; i < list.length; i++) {
+			data[i] = Array();
+			for (var j = 0; j < 5; j++) {
+				switch(j)
+				{
+					case 0:
+		    			data[i][0] = a[i].children[0].innerHTML;
 		    		break;
 		    		case 3:
-		    			data[i][1] = $(this).text();
+		    			data[i][1] = a[i].children[3].innerHTML;
 		    		break;
 		    		case 4:
-		    			data[i][2] = $(this).text();
+		    			data[i][2] = a[i].children[4].innerHTML;
 		    		break;
-		    	}
-		    }); 
-		})
-*/
-	for (var i = 0; i < list.length; i++) {
-		data[i] = Array();
-		for (var j = 0; j < 5; j++) {
-			switch(j)
-			{
-				case 0:
-	    			data[i][0] = a[i].children[0].innerHTML;
-	    		break;
-	    		case 3:
-	    			data[i][1] = a[i].children[3].innerHTML;
-	    		break;
-	    		case 4:
-	    			data[i][2] = a[i].children[4].innerHTML;
-	    		break;
+				}
 			}
 		}
-	}
-
 
 		console.log("data: " + data)
 
 		if (list.length==0) {
 			window.location.href = "https://portal.ncu.edu.tw/system/show/162";
-    		alert("連線逾時 / 網域錯誤\n請重新再試一次");
+    		alert("連線逾時\n請重新再試一次");
 		}
+
 		calcGPA(data);
     }
 
@@ -132,4 +111,4 @@ javascript:(
 		window.location.href = "https://portal.ncu.edu.tw/system/162"
     }
 
-	})();
+})();
