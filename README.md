@@ -8,11 +8,4 @@ National Central Univ. GPA Calculator
 所有運算都在您的電腦上運行，不會上傳伺服器。
 
 ## 使用方法
-將以下 code 加入書籤 成為一個書籤列按鈕
-```
-javascript:(function(){var%20script=document.createElement('SCRIPT');script.src='https://rawgit.com/JohnsonYuanTW/NCU_GPA/master/ncugpa.js';document.body.appendChild(script);})()
-```
-
-## 授權
-GPL 3.0 
-使用、引用請給我 Credit @JohnsonYuanTW
+請參考[使用說明頁面](http://140.115.81.224)
