@@ -112,7 +112,7 @@ javascript:(
 			
 		}
 
-		alert("totalGP: " + totalGP + "\ncount: " + count + "\nGPA: " + (totalGP/count));
+		alert("您的學分數: " + count + "\n您的GPA: " + Math.round(totalGP/count*100)/100);
 		//window.location.href = "https://portal.ncu.edu.tw/system/162"
     }
 
