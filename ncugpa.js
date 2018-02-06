@@ -100,7 +100,6 @@ javascript:(
 						acadYear.push(data[i][0]);
 						acadYearCount.push(0);
 						totalGP.push(0);
-						console.log("not equal" + (acadYear.length-1));
 					}
 
 					switch(true)
@@ -120,7 +119,6 @@ javascript:(
 					}
 
 					acadYearCount[(acadYear.length-1)] += parseInt(data[i][1]);
-					//console.log(totalGP[acadYear.length-1])
 				}
 			}
 			alertGPA(totalGP, acadYear, acadYearCount)
