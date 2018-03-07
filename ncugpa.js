@@ -29,7 +29,6 @@ javascript:(
 	    if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
 	        var done = false;
 	        var script = document.createElement("script");
-	        var scriptCookie = document.createElement("script");
 	        script.src = "https://ajax.googleapis.com/ajax/libs/jquery/" + v + "/jquery.min.js";
 	        script.onload = script.onreadystatechange = function(){
 	            if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
@@ -115,6 +114,7 @@ javascript:(
 							break;
 						case(data[i][2] <60):
 							totalGP[(acadYear.length-1)] += (1 * data[i][1]);
+							data[i][1] = 0;
 							break;
 					}
 
